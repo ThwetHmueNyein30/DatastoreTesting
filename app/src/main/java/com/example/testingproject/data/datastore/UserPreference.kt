@@ -1,4 +1,4 @@
-package com.example.testingproject.data
+package com.example.testingproject.data.datastore
 
 import kotlinx.coroutines.flow.Flow
 

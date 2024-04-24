@@ -1,33 +1,37 @@
 package com.example.testingproject
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.testingproject.data.UserPreference
+import com.example.testingproject.data.EmployeeRepository
+import com.example.testingproject.data.model.EmployeeInfoList
+import com.example.testingproject.data.model.UserData
+import com.example.testingproject.data.proto_datastore.EmployeeDataStore
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.filter
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val userPreference: UserPreference
+    private val repository: EmployeeRepository
 ) : ViewModel() {
 
-    val userName: StateFlow<String> = userPreference.userName().filter {
-        it.isNotEmpty()
+    fun setData(employeeInfoList: EmployeeInfoList){
+        Log.d("THN", "setData: ${employeeInfoList.employees?.size}")
+//        viewModelScope.launch {
+//            repository.saveEmployeeInfo(employeeInfoList)
+//        }
     }
-        .stateIn(
-            viewModelScope,
-            SharingStarted.WhileSubscribed(),
-            "No saved data"
-        )
-    fun saveUserName(name: String) {
+
+    fun getData() {
         viewModelScope.launch {
-            userPreference.saveUserName(name)
+            repository.getEmployeeInfo()
         }
     }
+
+
+
+
 }

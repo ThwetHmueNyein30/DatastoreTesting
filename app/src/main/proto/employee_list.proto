@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_package = "com.example.testingproject";
+option java_multiple_files = true;
+
+message EmployeeData{
+  string emailAddress = 1;
+  string employeeCode = 2;
+  string firstName = 3;
+  string jobTitleName = 4;
+  string lastName = 5;
+  string phoneNumber = 6;
+  string preferredFullName = 7;
+  string region = 8;
+  string userId = 9;
+}
+
+message EmployeeList{
+  repeated EmployeeData employee = 1;
+}
+

@@ -1,7 +1,9 @@
 package com.example.testingproject.di
 
-import com.example.testingproject.data.UserPreferenceImpl
-import com.example.testingproject.data.UserPreference
+import com.example.testingproject.data.EmployeeRepository
+import com.example.testingproject.data.EmployeeRepositoryImpl
+import com.example.testingproject.data.datastore.UserPreferenceImpl
+import com.example.testingproject.data.datastore.UserPreference
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -13,4 +15,8 @@ abstract class UserPreferenceModule {
 
     @Binds
     abstract fun bindUserPreferences(impl: UserPreferenceImpl): UserPreference
+
+    @Binds
+    abstract fun bindRepository(impl: EmployeeRepositoryImpl): EmployeeRepository
+
 }

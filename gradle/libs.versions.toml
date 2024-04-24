@@ -1,5 +1,7 @@
 [versions]
-agp = "8.3.2"
+activityKtx = "1.9.0"
+agp = "8.2.0"
+datastorePreferences = "1.1.0"
 kotlin = "1.9.0"
 coreKtx = "1.13.0"
 junit = "4.13.2"
@@ -7,16 +9,28 @@ junitVersion = "1.1.5"
 espressoCore = "3.5.1"
 lifecycleRuntimeKtx = "2.7.0"
 activityCompose = "1.9.0"
-composeBom = "2023.08.00"
-protobufPlugin = "0.9.4"
-protobuf = "3.25.2"
-googleOssPlugin = "0.10.6"
+composeBom = "2024.04.01"
 di-hilt = "2.49"
+ksp-version = "1.9.0-1.0.13"
+gp-protobuf = "0.9.4"
+protobuf = "3.25.2"
+compose-navigation-core = "1.4.4-beta"
+compose-navigation = "2.7.6"
+network-retrofit = "2.9.0"
+di-hilt-compose = "1.1.0"
+network-json = "2.9.0"
+material = "1.11.0"
+materialAndroidX = "1.6.0"
+
+
 
 
 
 [libraries]
+androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityKtx" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
+androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycleRuntimeKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -30,17 +44,29 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
-protobuf-protoc = { group = "com.google.protobuf", name = "protoc", version.ref = "protobuf" }
-google-oss-licenses-plugin = { group = "com.google.android.gms", name = "oss-licenses-plugin", version.ref = "googleOssPlugin" }
+di-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "di-hilt" }
+di-hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "di-hilt" }
+protobuf-kotlin-lite = { group = "com.google.protobuf", name = "protobuf-kotlin-lite", version.ref = "protobuf" }
+network-retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "network-retrofit" }
+network-converter = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "network-retrofit" }
+network-json = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "network-json" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "compose-navigation" }
+compose-destinations-core = { group = "io.github.raamcosta.compose-destinations", name = "core", version.ref = "compose-navigation-core" }
+compose-destinations-ksp = { group = "io.github.raamcosta.compose-destinations", name = "ksp", version.ref = "compose-navigation-core" }
+di-hilt-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "di-hilt-compose" }
+materialAndroidX = { group = "androidx.compose.material", name = "material", version.ref = "materialAndroidX" }
 
 
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "di-hilt" }
+protobuf = { id = "com.google.protobuf", version.ref = "gp-protobuf" }
+kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp-version" }
+
 
 
 

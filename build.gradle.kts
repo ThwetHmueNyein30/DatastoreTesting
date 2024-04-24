@@ -5,5 +5,6 @@ import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.
 plugins {
     alias(libs.plugins.androidApplication) apply false
     alias(libs.plugins.jetbrainsKotlinAndroid) apply false
-    id("com.google.dagger.hilt.android") version "2.48" apply false
+    alias(libs.plugins.kotlin.ksp) apply false
+    alias(libs.plugins.hilt.android) apply false
 }
