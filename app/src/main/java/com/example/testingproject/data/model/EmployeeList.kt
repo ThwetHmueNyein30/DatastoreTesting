@@ -1,15 +1,15 @@
 package com.example.testingproject.data.model
 
-import com.example.testingproject.EmployeeList
 import com.google.gson.annotations.SerializedName
-import kotlinx.collections.immutable.PersistentList
-import kotlinx.collections.immutable.persistentListOf
+import kotlinx.serialization.Serializable
 
-data class EmployeeInfoList(
-    @SerializedName("Employees") val employees: PersistentList<EmployeeItem> = persistentListOf()
+@Serializable
+data class EmployeeList(
+    @SerializedName("Employees") val employees: ArrayList<EmployeeItem> = arrayListOf()
 
 )
 
+@Serializable
 data class EmployeeItem(
     val emailAddress: String? = null,
     val employeeCode: String? = null,

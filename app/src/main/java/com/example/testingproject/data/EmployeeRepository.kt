@@ -1,12 +1,15 @@
 package com.example.testingproject.data
 
-import com.example.testingproject.data.model.EmployeeInfoList
+import com.example.testingproject.data.model.AppTranslationData
 import com.example.testingproject.data.model.EmployeeItem
 import kotlinx.coroutines.flow.Flow
 
 interface EmployeeRepository {
 
-    suspend fun saveEmployeeInfo(employeeInfoList: EmployeeInfoList)
+    //val translationData: Flow<AppTranslationData>
 
-     fun getEmployeeInfo():Flow<EmployeeInfoList>
+    suspend fun getDataByKey(key : String):String?
+
+    suspend fun saveData(data: AppTranslationData)
+
 }

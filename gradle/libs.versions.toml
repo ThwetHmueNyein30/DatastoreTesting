@@ -7,6 +7,8 @@ coreKtx = "1.13.0"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
+kotlinxCollectionsImmutable = "0.3.5"
+kotlinxSerializationJson = "1.6.3"
 lifecycleRuntimeKtx = "2.7.0"
 activityCompose = "1.9.0"
 composeBom = "2024.04.01"
@@ -21,9 +23,6 @@ di-hilt-compose = "1.1.0"
 network-json = "2.9.0"
 material = "1.11.0"
 materialAndroidX = "1.6.0"
-
-
-
 
 
 [libraries]
@@ -46,17 +45,19 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 di-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "di-hilt" }
 di-hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "di-hilt" }
+kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinxCollectionsImmutable" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 protobuf-kotlin-lite = { group = "com.google.protobuf", name = "protobuf-kotlin-lite", version.ref = "protobuf" }
 network-retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "network-retrofit" }
 network-converter = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "network-retrofit" }
 network-json = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "network-json" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "compose-navigation" }
 compose-destinations-core = { group = "io.github.raamcosta.compose-destinations", name = "core", version.ref = "compose-navigation-core" }
 compose-destinations-ksp = { group = "io.github.raamcosta.compose-destinations", name = "ksp", version.ref = "compose-navigation-core" }
 di-hilt-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "di-hilt-compose" }
 materialAndroidX = { group = "androidx.compose.material", name = "material", version.ref = "materialAndroidX" }
+
 
 
 
@@ -66,6 +67,7 @@ jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "k
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "di-hilt" }
 protobuf = { id = "com.google.protobuf", version.ref = "gp-protobuf" }
 kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp-version" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
 
 

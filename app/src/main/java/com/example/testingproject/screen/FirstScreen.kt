@@ -1,6 +1,7 @@
 package com.example.testingproject.screen
 
 import android.content.Context
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -17,17 +18,18 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.testingproject.MainViewModel
-import com.example.testingproject.data.model.EmployeeInfoList
+import com.example.testingproject.data.model.AppTranslationData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
+
 @Composable
 fun FirstScreen(navController: NavController, viewModel: MainViewModel = hiltViewModel()) {
-    var employeeInfoList by remember { mutableStateOf(EmployeeInfoList()) }
+    var data by remember { mutableStateOf(AppTranslationData()) }
     val context = LocalContext.current
 
     LaunchedEffect(Unit) {
-        employeeInfoList = getEmployeesFromAssets(context, "employees.json")
+        data = getEmployeesFromAssets(context, "app_preference.json")
     }
 
 
@@ -36,19 +38,20 @@ fun FirstScreen(navController: NavController, viewModel: MainViewModel = hiltVie
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "This is the Main Screen.....${employeeInfoList.employees?.size}")
+        Text(text = "This is the Main Screen.")
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = {
             navController.navigate("second_screen")
-            viewModel.setData(employeeInfoList)
+            viewModel.setData(data)
         }) {
-            Text(text = "Go to Second Screen")
+            Text(text = "Save Data")
         }
     }
 }
 
 
-fun getEmployeesFromAssets(context: Context, fileName: String): EmployeeInfoList {
+
+fun getEmployeesFromAssets(context: Context, fileName: String): AppTranslationData {
     val jsonString: String
     try {
         val inputStream = context.assets.open(fileName)
@@ -56,14 +59,17 @@ fun getEmployeesFromAssets(context: Context, fileName: String): EmployeeInfoList
         val buffer = ByteArray(size)
         inputStream.read(buffer)
         jsonString = String(buffer)
+        Log.e("THN", "getEmployeesFromAssets: success ", )
     } catch (e: Exception) {
+        Log.e("THN", "getEmployeesFromAssets: error ", )
+
         // Handle error
-        return EmployeeInfoList()
+        return AppTranslationData()
     }
 
     val gson = Gson()
-    val employeeList: EmployeeInfoList =
-        gson.fromJson(jsonString, object : TypeToken<EmployeeInfoList>() {}.type)
-    return employeeList
+    val data: AppTranslationData =
+        gson.fromJson(jsonString, object : TypeToken<AppTranslationData>() {}.type)
+    return data
 }
 

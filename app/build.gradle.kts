@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.ksp)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.protobuf)
-
+    id ("org.jetbrains.kotlin.plugin.serialization")
 }
 
 android {
@@ -95,7 +95,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.materialAndroidX)
 
-    implementation ("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.5")
+    implementation (libs.kotlinx.collections.immutable)
+    implementation (libs.kotlinx.serialization.json)
 
 
 }

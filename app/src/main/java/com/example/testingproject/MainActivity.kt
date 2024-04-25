@@ -5,13 +5,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -20,7 +19,10 @@ import com.example.testingproject.screen.SecondScreen
 import com.example.testingproject.ui.theme.TestingProjectTheme
 import dagger.hilt.android.AndroidEntryPoint
 
-
+/*val Context.dataStore: DataStore<EmployeeData> by dataStore(
+    fileName = "employee_list.pb",
+    serializer = EmployeeInfoSerializer
+)*/
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
@@ -37,7 +39,7 @@ class MainActivity : ComponentActivity() {
                 MaterialTheme {
                     NavHost(navController = navController, startDestination = "main_screen") {
                         composable("main_screen") { FirstScreen(navController) }
-                        composable("second_screen") { SecondScreen() }
+                        composable("second_screen") { SecondScreen(hiltViewModel()) }
                     }
                 }
             }
